@@ -21,17 +21,17 @@ export function SettingsBlock(props: SettingsPropsType) {
     }
 
 
-    return <div className={'settings-board'}>
+    return <div className={'board'}>
         <div className={'inputs-wrapper'}>
 
-                        <span>max value
+                        <span className='input-value'>max value
                             <input type='number'
                                    value={props.maxValue}
                                    onChange={onChangeMaxValue}
                                    className={!props.error ? '' : 'error'}/>
                         </span>
 
-                         <span>start value
+                         <span className='input-value'>start value
                             <input value={props.startValue}
                                    onChange={onChangeStartValue}
                                    type='number'

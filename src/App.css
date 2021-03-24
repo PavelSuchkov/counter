@@ -1,5 +1,17 @@
 .App {
   text-align: center;
+
+  /*display: inline-block;*/
+}
+
+.board {
+  display: inline-block;
+  padding: 3px;
+}
+
+
+.input-value {
+  display: block;
 }
 
 .error {

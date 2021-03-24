@@ -1,12 +1,14 @@
 import React from "react";
 
 type WorkBoardPropsType = {
-    table: string | number
     increment: () => void
     reset: () => void
     disableInc: boolean
     disableReset: boolean
     red: boolean
+    count: number
+    startValue: number
+    maxValue: number
 }
 
 export function WorkBoard(props: WorkBoardPropsType) {
@@ -20,11 +22,15 @@ export function WorkBoard(props: WorkBoardPropsType) {
     }
 
 
-
-    return <div className={'work-board'}>
+    return <div className={'board'}>
         <div className={'board-wrapper'}>
             <div>
-                <p className={!props.red? '' : 'red'}>{props.table}</p>
+                <h3 className={!props.red ? '' : 'red'}>
+                    {props.maxValue <= props.startValue || (props.maxValue < 0 || props.startValue < 0)
+                        ? "Error"
+                        : props.count
+                    }
+                </h3>
             </div>
         </div>
         <div className={'buttons-wrapper'}>
