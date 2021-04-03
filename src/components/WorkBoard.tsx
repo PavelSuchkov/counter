@@ -23,15 +23,13 @@ export function WorkBoard(props: WorkBoardPropsType) {
 
 
     return <div className={'board'}>
-        <div className={'board-wrapper'}>
-            <div>
-                <h3 className={!props.red ? '' : 'red'}>
-                    {props.maxValue <= props.startValue || (props.maxValue < 0 || props.startValue < 0)
-                        ? "Error"
-                        : props.count
-                    }
-                </h3>
-            </div>
+        <div className={'inputs-wrapper'}>
+            <h1 className={!props.red ? '' : 'red'}>
+                {props.maxValue <= props.startValue || (props.maxValue < 0 || props.startValue < 0)
+                    ? "Error"
+                    : props.count
+                }
+            </h1>
         </div>
         <div className={'buttons-wrapper'}>
             <button onClick={increment} disabled={props.disableInc}>Inc</button>

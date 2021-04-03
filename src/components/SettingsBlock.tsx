@@ -22,8 +22,8 @@ export function SettingsBlock(props: SettingsPropsType) {
 
 
     return <div className={'board'}>
-        <div className={'inputs-wrapper'}>
 
+        <div className={'inputs-wrapper'}>
                         <span className='input-value'>max value
                             <input type='number'
                                    value={props.maxValue}
@@ -39,7 +39,8 @@ export function SettingsBlock(props: SettingsPropsType) {
                          </span>
         </div>
         <div className={'buttons-wrapper'}>
-            <button onClick={() => {props.setValues()}} disabled={props.disableSet}>Set</button>
+            <button onClick={() => {props.setValues()}} disabled={props.disableSet}
+            >Set</button>
         </div>
     </div>
 }
