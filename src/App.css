@@ -10,11 +10,12 @@
     flex-direction: column;
     align-items: center;
     padding: 3px;
-    border: 5px solid blue;
+    border: 5px solid #1a1aae;
     border-radius: 15px;
     margin: 20px;
     width: 300px;
     height: 300px;
+    background-color: #373636;
 }
 
 .inputs-wrapper {
@@ -23,21 +24,23 @@
     flex-direction: column;
     display: flex;
     justify-content: center;
-    border: 5px solid blue;
+    border: 5px solid #1a1aae;
     border-radius: 15px;
     /*margin: 5px;*/
     margin-top: 20px;
     padding: 5px;
     color: white;
+    background-color: #373636;
 }
 .buttons-wrapper {
     display: flex;
     justify-content: center;
-    border: 5px solid blue;
+    border: 5px solid #1a1aae;
     height: 100px;
     width: 250px;
     margin-top: 30px;
     border-radius: 15px;
+    background-color: #373636;
 }
 
 button {
@@ -47,7 +50,7 @@ button {
     margin: 3px;
     width: 70px;
     height: 30px;
-    border: 5px solid blue;
+    border: 5px solid #1a1aae;
     border-radius: 5px;
     font-size: medium;
     /*background-color: gray;*/
