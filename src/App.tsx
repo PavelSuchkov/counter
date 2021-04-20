@@ -41,6 +41,7 @@ function App() {
             setCount(counterValue.count)
             setStartValue(counterValue.startValue)
             setMaxValue(counterValue.maxValue)
+            setDisableSet(false)
         }
     }
 
@@ -83,7 +84,6 @@ function App() {
         setMaxValue(newMaxValue)
         if (newMaxValue < 0 || newMaxValue <= startValue ) {
             setDisableSet(true);
-            setDisableInc(true);
             setDisableInc(true);
             setDisableReset(true);
             setError(true)
