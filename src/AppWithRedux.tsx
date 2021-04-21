@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback} from 'react';
 import './App.css';
 import {SettingsBlock} from "./components/SettingsBlock";
 import {WorkBoard} from "./components/WorkBoard";
@@ -15,7 +15,6 @@ import {
 
 export const AppWithRedux = React.memo(() => {
 
-
     let dispatch = useDispatch();
     let {red,
         count,
@@ -26,55 +25,26 @@ export const AppWithRedux = React.memo(() => {
         disableReset,
         disableSet} = useSelector<AppRootStateType, initialStateType>(state => state.counter);
 
-    // useEffect(() => {
-    //     getValuesFromLocalStorage()
-    // }, [])
 
-    //
-    // useEffect(() => {
-    //     setToLocalStorage()
-    // }, [count, startValue, maxValue])
-
-    //
-    // const setToLocalStorage = () => {
-    //     let counter = {
-    //         count,
-    //         startValue,
-    //         maxValue
-    //     }
-    //     localStorage.setItem('counter', JSON.stringify(counter));
-    // }
-
-    // const getValuesFromLocalStorage = () => {
-    //     let counterValuesAsSting = localStorage.getItem('counter');
-    //     if(counterValuesAsSting) {
-    //         let counterValue  = JSON.parse(counterValuesAsSting)
-    //         setCount(counterValue.count)
-    //         setStartValue(counterValue.startValue)
-    //         setMaxValue(counterValue.maxValue)
-    //         setDisableSet(false)
-    //     }
-    // }
-    //
-    const incButtonClick = () => {
+    const incButtonClick = useCallback(() => {
         dispatch(increment());
-    };
+    }, [dispatch]);
 
-    const resetCount = () => {
+    const resetCount = useCallback(() => {
         dispatch(reset());
-    };
+    }, [dispatch]);
 
-    const changeStartValue = (newStartValue: number) => {
+    const changeStartValue = useCallback((newStartValue: number) => {
         dispatch(changeStartValueAC(newStartValue))
-    };
+    }, [dispatch]);
 
-    const changeMaxValue = (newMaxValue: number) => {
+    const changeMaxValue = useCallback((newMaxValue: number) => {
         dispatch(changeMaxValueAC(newMaxValue))
-    };
+    }, [dispatch]);
 
-    const setValues = () => {
+    const setValues = useCallback(() => {
         dispatch(setValue())
-    }
+    }, [dispatch]);
 
 
     return (

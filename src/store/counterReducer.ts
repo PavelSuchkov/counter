@@ -1,5 +1,3 @@
-import {AppRootStateType} from "./store";
-
 export type initialStateType = typeof initialState
 
 let initialState = {
@@ -35,10 +33,10 @@ export type setValueActionType = {
 }
 
 export type ActionsType = incrementActionType
-                        | resetActionType
-                        | changeStartValueActionType
-                        | changeMaxValueActionType
-                        | setValueActionType
+    | resetActionType
+    | changeStartValueActionType
+    | changeMaxValueActionType
+    | setValueActionType
 
 export const counterReducer = (state: initialStateType = initialState,
                                action: ActionsType): initialStateType => {
@@ -49,7 +47,7 @@ export const counterReducer = (state: initialStateType = initialState,
             stateCopy.count = stateCopy.count + 1;
             stateCopy.disableSet = true;
             stateCopy.red = false;
-            if (stateCopy.count === stateCopy.maxValue){
+            if (stateCopy.count === stateCopy.maxValue) {
                 stateCopy.disableInc = true;
                 stateCopy.red = true
             }
@@ -66,16 +64,18 @@ export const counterReducer = (state: initialStateType = initialState,
 
         case "CHANGE-START-VALUE": {
             let stateCopy = {...state};
-                stateCopy.startValue = action.newStartValue
+            stateCopy.disableInc = true;
+            stateCopy.disableReset = true;
+            stateCopy.startValue = action.newStartValue
             if (action.newStartValue < 0) {
-                stateCopy.disableInc = true;
+                /*stateCopy.disableInc = true;
+                stateCopy.disableReset = true;*/
                 stateCopy.disableSet = true;
-                stateCopy.disableReset = true;
                 stateCopy.error = true;
             } else if (action.newStartValue >= stateCopy.maxValue) {
-                stateCopy.disableInc = true;
+                /*stateCopy.disableInc = true;
+                stateCopy.disableReset = true;*/
                 stateCopy.disableSet = true;
-                stateCopy.disableReset = true;
                 stateCopy.error = true;
             } else {
                 stateCopy.disableSet = false;
@@ -86,9 +86,11 @@ export const counterReducer = (state: initialStateType = initialState,
         case "CHANGE-MAX-VALUE": {
             let stateCopy = {...state};
             stateCopy.maxValue = action.newMaxValue;
-            if ( stateCopy.maxValue < 0  || stateCopy.maxValue <= stateCopy.startValue) {
-                stateCopy.disableReset = true;
-                stateCopy.disableInc = true;
+            stateCopy.disableInc = true;
+            stateCopy.disableReset = true;
+            if (stateCopy.maxValue < 0 || stateCopy.maxValue <= stateCopy.startValue) {
+                /*  stateCopy.disableReset = true;
+                  stateCopy.disableInc = true;*/
                 stateCopy.disableSet = true;
                 stateCopy.error = true;
             } else {
@@ -113,7 +115,7 @@ export const counterReducer = (state: initialStateType = initialState,
 }
 
 export const increment = (): incrementActionType => {
-        return { type: "INCREMENT" }
+    return {type: "INCREMENT"}
 }
 
 export const reset = (): resetActionType => {
@@ -125,9 +127,9 @@ export const changeStartValueAC = (newStartValue: number): changeStartValueActio
 }
 
 export const changeMaxValueAC = (newMaxValue: number): changeMaxValueActionType => {
-    return {type: "CHANGE-MAX-VALUE", newMaxValue }
+    return {type: "CHANGE-MAX-VALUE", newMaxValue}
 }
 
-export const setValue = ():setValueActionType => {
+export const setValue = (): setValueActionType => {
     return {type: "SET-VALUE"}
 }

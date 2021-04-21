@@ -14,36 +14,36 @@ function App() {
     const [error, setError] = useState<boolean>(false);
     const [red, setRed] = useState<boolean>(false)
 
-
-    useEffect(() => {
-        getValuesFromLocalStorage()
-    }, [])
-
-
-    useEffect(() => {
-        setToLocalStorage()
-    }, [count, startValue, maxValue])
-
-
-    const setToLocalStorage = () => {
-        let counter = {
-            count,
-            startValue,
-            maxValue
-        }
-        localStorage.setItem('counter', JSON.stringify(counter));
-    }
-
-    const getValuesFromLocalStorage = () => {
-        let counterValuesAsSting = localStorage.getItem('counter');
-        if(counterValuesAsSting) {
-            let counterValue  = JSON.parse(counterValuesAsSting)
-            setCount(counterValue.count)
-            setStartValue(counterValue.startValue)
-            setMaxValue(counterValue.maxValue)
-            setDisableSet(false)
-        }
-    }
+    //
+    // useEffect(() => {
+    //     getValuesFromLocalStorage()
+    // }, [])
+    //
+    //
+    // useEffect(() => {
+    //     setToLocalStorage()
+    // }, [count, startValue, maxValue])
+    //
+    //
+    // const setToLocalStorage = () => {
+    //     let counter = {
+    //         count,
+    //         startValue,
+    //         maxValue
+    //     }
+    //     localStorage.setItem('counter', JSON.stringify(counter));
+    // }
+    //
+    // const getValuesFromLocalStorage = () => {
+    //     let counterValuesAsSting = localStorage.getItem('counter');
+    //     if(counterValuesAsSting) {
+    //         let counterValue  = JSON.parse(counterValuesAsSting)
+    //         setCount(counterValue.count)
+    //         setStartValue(counterValue.startValue)
+    //         setMaxValue(counterValue.maxValue)
+    //         setDisableSet(false)
+    //     }
+    // }
 
 
     const incButtonClick = () => {

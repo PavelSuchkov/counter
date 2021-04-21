@@ -1,14 +1,22 @@
 import {counterReducer} from "./counterReducer";
 import {combineReducers, createStore} from "redux";
-import {TypedUseSelectorHook, useSelector} from "react-redux";
-
 
 const rootReducer = combineReducers({
     counter: counterReducer
 })
 
-export const store = createStore(rootReducer);
+let preloadedState;
+const persistedTodoString = localStorage.getItem('counter-state');
+if(persistedTodoString) {
+    preloadedState = JSON.parse(persistedTodoString)
+}
 
-export type AppRootStateType = ReturnType<typeof rootReducer>
+export const store = createStore(rootReducer, preloadedState);
 
-export const useTypedSelector: TypedUseSelectorHook<AppRootStateType> = useSelector
+store.subscribe(() => {
+            localStorage.setItem('counter-state', JSON.stringify(store.getState()));
+
+} )
+
+export type AppRootStateType = ReturnType<typeof rootReducer>;
+export type AppStoreType = typeof store;
